@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-12">
+    <br/>
+    <h1 class="header-4 text-center">
+      Категорія <% if @section %> для <%= @section.name %><% end %>
+    </h1>
+  </div>
+  <div class="col-12">
+    <%= render partial: 'form' %>
+  </div>
+</div>
+

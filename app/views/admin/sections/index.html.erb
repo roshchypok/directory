@@ -1,0 +1,59 @@
+<div class="row">
+  <div class="col-12">
+    <br/>
+    <h1 class="header-4 text-center">Секції</h1>
+  </div>
+  <div class="col-12 btn-toolbar justify-content-end" rola="toolbar">
+    <%= link_to 'Створити', new_admin_section_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+<br/>
+<nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin/">Головна</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Секції</li>
+  </ol>
+</nav>
+<br/>
+<table class="table">
+  <thead class="thead-">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Назва</th>
+    <th scope="col">Лінк</th>
+    <th scope="col">Категорії</th>
+    <th scope="col">Активна</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @sections.each do |s| %>
+  <tr>
+    <th scope="row"><%= s.id %></th>
+    <td><%= s.name %></td>
+    <td>/<%= s.slug %></td>
+    <td>
+      <%= link_to admin_section_categories_path(s), class: 'btn btn-light btn-sm' do %>
+        Категорій <span class="badge badge-dark"><%= s.categories.size %></span>
+      <% end %>
+    </td>
+    <td>
+      <% if s.active %>
+          <span class="badge badge-success">так</span>
+      <% else %>
+          <%= link_to 'ні', activate_admin_section_path(s), data: {confirm: "Активувати секцію [ #{s.name} ]?"},
+              class: 'confirm-need badge badge-danger' %>
+      <% end %>
+    </td>
+    <td>
+      <%= link_to 'Змінити', edit_admin_section_path(s) %>&nbsp;|&nbsp;
+      <%= link_to 'Видалити', [:admin, s], method: 'delete',
+                  class: 'confirm-need', data: {confirm: "Підтвердіть видалення розділу [ #{s.name} ]"} %>
+    </td>
+  </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= render partial: 'admin/shared/confirmation' %>

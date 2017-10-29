@@ -1,0 +1,92 @@
+<br/>
+<nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin/">Головна</a></li>
+    <li class="breadcrumb-item"><%= link_to 'Секції', admin_sections_path %></li>
+    <li class="breadcrumb-item active" aria-current="page">Секція</li>
+  </ol>
+</nav>
+<br/>
+<%= form_for [:admin, @section], html: { 'data-bvalidator-validate': '' } do |f| %>
+
+    <ul class="nav nav-tabs" id="langTab" role="tablist">
+      <li class="nav-item">
+        <a class="nav-link active" id="ukr-tab" data-toggle="tab" href="#ukr" role="tab"
+           aria-controls="ukr" aria-selected="true">Українською</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="rus-tab" data-toggle="tab" href="#rus" role="tab"
+           aria-controls="rus" aria-selected="false">Російською</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" id="eng-tab" data-toggle="tab" href="#eng" role="tab"
+           aria-controls="eng" aria-selected="false">Англійською</a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="langTabContent">
+      <br/>
+      <div class="tab-pane fade show active" id="ukr" role="tabpanel" aria-labelledby="ukr-tab">
+        <!-- українська -->
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control', data: {bvalidator: 'required'} %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control', rows: 5 %>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="rus" role="tabpanel" aria-labelledby="rus-tab">
+        <!-- російська -->
+        <div class="form-group">
+          <%= f.label :name_ru %>
+          <%= f.text_field :name_ru, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description_ru %>
+          <%= f.text_area :description_ru, class: 'form-control', rows: 5 %>
+        </div>
+      </div>
+      <div class="tab-pane fade" id="eng" role="tabpanel" aria-labelledby="eng-tab">
+        <!-- англійська -->
+        <div class="form-group">
+          <%= f.label :name_en %>
+          <%= f.text_field :name_en, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description_en %>
+          <%= f.text_area :description_en, class: 'form-control', rows: 5 %>
+        </div>
+      </div>
+
+      <br/>
+
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :slug, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sd-10">
+        <%= f.text_field :slug, class: 'form-control', data: {bvalidator: 'required'} %>
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <%= f.label :position, class: 'col-sm-2 col-form-label' %>
+      <div class="col-sd-10">
+        <%= f.text_field :position, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="form-check">
+      <%= f.label :active, class: 'form-check-label'  do %>
+        <%= f.check_box :active, class: 'form-check-input' %>
+          Активна
+      <% end %>
+    </div>
+
+    <br/>
+
+    <%= f.submit 'Зберегти', class: 'btn btn-primary' %>&nbsp;|&nbsp;<%= link_to :back %>
+
+<% end %>

@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  section_id: 1
+  slug: MyString
+  name: MyString
+  description: 
+  name_ru: MyString
+  description_ru: MyText
+  name_en: 
+  description_en: MyText
+  position: 1
+  active: false
+
+two:
+  section_id: 1
+  slug: MyString
+  name: MyString
+  description: 
+  name_ru: MyString
+  description_ru: MyText
+  name_en: 
+  description_en: MyText
+  position: 1
+  active: false

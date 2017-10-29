@@ -1,0 +1,71 @@
+<div class="row">
+  <div class="col-12">
+    <br/>
+    <h1 class="header-4 text-center">
+      <% if @section %><%= @section.name %> :: <% end %>Категорії</h1>
+  </div>
+  <div class="col-12 btn-toolbar justify-content-end" rola="toolbar">
+    <%= link_to 'Створити',
+                @section ? new_admin_section_category_path(@section) : new_admin_category_path,
+                class: 'btn btn-primary' %>
+  </div>
+</div>
+<br/>
+<nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin/">Головна</a></li>
+    <% if @section %>
+        <li class="breadcrumb-item"><%= link_to 'Секції', admin_sections_path %></li>
+        <li class="breadcrumb-item active" aria-current="page"><%= @section.name %></li>
+    <% else %>
+        <li class="breadcrumb-item active" aria-current="page">Категорії</li>
+    <% end %>
+  </ol>
+</nav>
+<br/>
+<table class="table">
+  <thead class="thead-">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Назва</th>
+    <th scope="col">Лінк</th>
+    <th scope="col">Позиції</th>
+    <th scope="col">Активна</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @categories.each do |c| %>
+      <tr>
+        <th scope="row"><%= c.id %></th>
+        <td><%= c.name %></td>
+        <td>/<%= c.slug %></td>
+        <td>
+
+        </td>
+        <td>
+          <% if c.active %>
+              <span class="badge badge-success">так</span>
+          <% else %>
+              <%= link_to 'ні',
+                          @section ? activate_admin_section_category_path(@section, c) : activate_admin_category_path(c),
+                          data: {confirm: "Активувати категорію [ #{c.name} ]?"},
+                          class: 'confirm-need badge badge-danger' %>
+          <% end %>
+        </td>
+        <td>
+          <%= link_to 'Змінити',
+                      @section ? edit_admin_section_category_path(@section, c) : edit_admin_category_path(c) %>&nbsp;|&nbsp;
+          <%= link_to 'Видалити',
+                      @section ? admin_section_category_path(@section, c) : admin_category_path(c),
+                      method: 'delete',
+                      class: 'confirm-need',
+                      data: {confirm: "Підтвердіть видалення розділу [ #{c.name} ]"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= render partial: 'admin/shared/confirmation' %>
