@@ -6,4 +6,6 @@ class Section < ApplicationRecord
 
   validates :slug, uniqueness: {message: 'лінк має бути унікальним'}
 
+  mount_uploader :avatar, AvatarUploader
+
 end

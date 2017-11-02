@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171029143523) do
+ActiveRecord::Schema.define(version: 20171102191524) do
 
   create_table "categories", force: :cascade do |t|
     t.integer "section_id"
@@ -25,6 +25,7 @@ ActiveRecord::Schema.define(version: 20171029143523) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
   create_table "sections", force: :cascade do |t|
@@ -39,6 +40,7 @@ ActiveRecord::Schema.define(version: 20171029143523) do
     t.boolean "active", default: true
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "avatar"
   end
 
 end

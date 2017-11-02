@@ -7,4 +7,6 @@ class Category < ApplicationRecord
   validates :slug, uniqueness: { scope: :section_id,
                                 message: "лiнк має бути унікальним для секції" }
 
+  mount_uploader :avatar, AvatarUploader
+
 end
