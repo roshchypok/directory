@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :places
+
     root to: 'dashboard#index'
   end
 

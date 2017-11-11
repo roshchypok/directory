@@ -1,0 +1,48 @@
+<div class="row">
+  <div class="col-12">
+    <br/>
+    <h1 class="header-4 text-center">Місцини</h1>
+  </div>
+  <div class="col-12 btn-toolbar justify-content-end" rola="toolbar">
+    <%= link_to 'Створити', new_admin_place_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+<br/>
+<nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin/">Головна</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Місцини</li>
+  </ol>
+</nav>
+<br/>
+<table class="table">
+  <thead class="thead-">
+  <tr>
+    <th scope="col">#</th>
+    <th scope="col">Назва</th>
+    <th scope="col">Лінк</th>
+    <th scope="col">Позиції</th>
+    <th scope="col"></th>
+  </tr>
+  </thead>
+
+  <tbody>
+  <% @places.each do |p| %>
+      <tr>
+        <th scope="row"><%= p.id %></th>
+        <td><%= p.name %></td>
+        <td>/<%= p.slug %></td>
+        <td>
+          Позицій <span class="badge badge-dark">0</span>
+        </td>
+        <td>
+          <%= link_to 'Змінити', edit_admin_place_path(p) %>&nbsp;|&nbsp;
+          <%= link_to 'Видалити', [:admin, p], method: 'delete',
+                      class: 'confirm-need', data: {confirm: "Підтвердіть видалення місцини <b>#{p.name}</b>"} %>
+        </td>
+      </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<%= render partial: 'admin/shared/confirmation' %>
