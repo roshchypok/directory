@@ -1,0 +1,29 @@
+<div class="row">
+  <div class="col-12">
+    <br/>
+    <h1 class="header-4 text-center">Особливості</h1>
+  </div>
+  <div class="col-12 btn-toolbar justify-content-end" rola="toolbar">
+    <%= link_to 'Створити', new_admin_feature_path, class: 'btn btn-primary' %>
+  </div>
+</div>
+<br/>
+<nav aria-label="breadcrumb" role="navigation">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a href="/admin/">Головна</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Особливості</li>
+  </ol>
+</nav>
+<br/>
+<div class="list-group" style="flex-wrap: wrap; flex-direction: row;">
+  <% @features.each do |f| %>
+      <div class="col-4 btn list-group-item text-left">
+        <%= link_to f.name, edit_admin_feature_path(f) %>
+        <%= link_to 'x', [:admin, f], method: 'delete', style: "color: red; font-weight: bold",
+                    class: 'confirm-need float-right',
+                    data: {confirm: "Підтвердіть видалення особливості <b>#{f.name}</b>"} %>
+      </div>
+  <% end %>
+</div>
+
+<%= render partial: 'admin/shared/confirmation' %>
