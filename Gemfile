@@ -7,7 +7,8 @@ end
 
 
 gem 'rails', '~> 5.1.4'
-gem 'sqlite3'
+#gem 'sqlite3'
+gem 'mysql2', '0.4.6'
 gem 'puma', '~> 3.7'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
@@ -30,6 +31,7 @@ gem 'jbuilder', '~> 2.5'
 
 gem 'acts_as_list'
 gem 'carrierwave', '~> 1.0'
+gem 'translit'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

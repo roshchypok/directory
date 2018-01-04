@@ -5,14 +5,25 @@
   <%= csrf_meta_tags %>
 
   <%= stylesheet_link_tag    'admin', media: 'all' %>
-  <%= javascript_include_tag 'admin' %>
+  <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+
 </head>
 
 <body>
-<div class="container">
-  <%= render partial: 'admin/shared/header' %>
-  <%= render partial: 'admin/shared/flash' %>
-  <%= yield %>
-</div>
+  <%= render partial: 'admin/shared/menu' %>
+  <div class="page">
+    <%= render partial: 'admin/shared/page_header' %>
+    <%= render partial: 'admin/shared/breadcrumbs' if @breadcrumbs %>
+    <%= render partial: 'admin/shared/flash' %>
+    <section class="charts">
+      <div class="container-fluid">
+        <%= yield %>
+      </div>
+    </section>
+
+    <%= render partial: 'admin/shared/footer' %>
+  </div>
+  <%= javascript_include_tag 'admin' %>
 </body>
+
 </html>

@@ -19,6 +19,12 @@ Rails.application.routes.draw do
     resources :places
     resources :features
 
+    resources :items do
+      member do
+        get 'activate', to: 'items#update', defaults: {item: {active: true}}
+      end
+    end
+
     root to: 'dashboard#index'
   end
 

@@ -1,0 +1,64 @@
+<header>
+  <h1 class="h3">Каталог
+    <div class="col-12 btn-toolbar justify-content-end" role="toolbar">
+    <%= link_to 'Створити', new_admin_item_path, class: 'btn btn-primary' %>
+  </div>
+  </h1>
+</header>
+
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div classs="card-body">
+        <table class="table">
+          <thead class="thead-">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Секція</th>
+            <th scope="col">Категорія</th>
+            <th scope="col">Назва</th>
+            <th scope="col">Лінк</th>
+            <th scope="col">Активна</th>
+            <th scope="col"></th>
+          </tr>
+          </thead>
+
+          <tbody>
+          <% @items.each do |item| %>
+            <tr>
+              <th scope="row"><%= item.id %></th>
+              <td><%= item.category.section.name %></td>
+              <td><%= item.category.name %></td>
+              <td><%= item.name %></td>
+              <td>/<%= item.slug %></td>
+              <td>
+                <% if item.active %>
+                  <span class="badge badge-success">так</span>
+                <% else %>
+                  <%= link_to 'ні', activate_admin_item_path(item),
+                              data: {confirm: "Активувати позицію <b>#{item.name}</b>?"},
+                              class: 'confirm-need badge badge-danger' %>
+                <% end %>
+              </td>
+              <td>
+                <%= link_to 'Змінити', edit_admin_item_path(item) %>&nbsp;|&nbsp;
+                <%= link_to 'Видалити', [:admin, item], method: 'delete',
+                            class: 'confirm-need', data: {confirm: "Підтвердіть видалення позиції <b>#{item.name} </b>"} %>
+              </td>
+            </tr>
+          <% end %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<div class="row">
+
+</div>
+<br/>
+
+
+<%= render partial: 'admin/shared/confirmation' %>

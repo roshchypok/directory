@@ -1,0 +1,11 @@
+<div class="breadcrumb-holder">
+  <div class="container-fluid">
+    <ul class="breadcrumb">
+      <% @breadcrumbs.each do |b| %>
+        <li class="breadcrumb-item <%= 'active' if b[:active] %>">
+          <%= link_to_unless b[:active], b[:title], b[:link] %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>

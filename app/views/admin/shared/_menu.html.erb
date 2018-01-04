@@ -1,0 +1,54 @@
+<nav class="side-navbar">
+  <div class="side-navbar-wrapper">
+    <div class="sidenav-header d-flex align-items-center justify-content-center">
+      <div class="sidenav-header-inner text-center">
+        <h2 class="h5 text-uppercase">Directory</h2>
+        <span class="text-uppercase">regional listing</span>
+      </div>
+      <div class="sidenav-header-logo">
+        <%= link_to admin_root_path, class: 'brand-small text-center' do %>
+          <strong>D</strong><strong class="text-primary">R</strong>
+        <% end %>
+      </div>
+    </div>
+    <div class="main-menu">
+      <ul id="side-main-menu" class="side-menu list-unstyled">
+        <li class="active">
+          <%= link_to admin_root_path do %>
+            <i class="icon-home"></i><span>Home</span>
+          <% end %>
+        </li>
+        <li>
+          <%= link_to admin_items_path do %>
+            <i class="icon-form"></i><span>Каталог</span>
+          <% end %>
+        </li>
+      </ul>
+    </div>
+    <div class="admin-menu">
+      <ul id="side-admin-menu" class="side-menu list-unstyled">
+        <li>
+          <a href="#pages-nav-list" data-toggle="collapse" aria-expanded="false">
+            <i class="icon-interface-windows"></i><span>Довідники</span>
+            <div class="arrow pull-right">
+              <i class="fa fa-angle-down"></i>
+          </div></a>
+          <ul id="pages-nav-list" class="collapse list-unstyled">
+            <li>
+              <%= link_to 'Секції', admin_sections_path %>
+            </li>
+            <li>
+              <%= link_to 'Категорії', admin_categories_path %>
+            </li>
+            <li>
+              <%= link_to 'Особливості', admin_features_path %>
+            </li>
+            <li>
+              <%= link_to 'Місцини', admin_places_path %>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

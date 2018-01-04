@@ -1,0 +1,30 @@
+form {
+  &:valid {
+    .nav-tabs {
+      .tab-error {
+        display: none;
+      }
+    }
+  }
+
+  &:invalid {
+    .nav-tabs {
+      .tab-error {
+        display: none;
+      }
+    }
+
+    &.was-validated {
+      .nav-tabs {
+        .tab-error {
+          display: inline-block;
+
+          &.empty {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+}

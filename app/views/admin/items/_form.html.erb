@@ -1,0 +1,265 @@
+<%= form_for [:admin, @item],
+             html: {
+                 id: 'needs-validation',
+                 novalidate: :novalidate,
+                 class: params[:action] != 'new' ? 'was-validated' : ''
+             } do |f| %>
+    <div class="form-group">
+      <div class="row">
+        <div class="col-8">
+          <%= f.label :category_id %>
+          <%= f.select :category_id, Category.all.collect {|s| [ s.name, s.id ] }, {}, {class: 'form-control', required: :required} %>
+          <div class="invalid-feedback">
+            Категорія має бути вибрана.
+          </div>
+        </div>
+        <div class="col-2 offset-1">
+          <div class="i-checks">
+            <%= f.check_box :checked, class: 'form-control-custom' %>
+            <%= f.label :checked, 'Перевірено',  class: 'form-check-label' %>
+          </div>
+          <div class="line"></div>
+          <div class="i-checks">
+            <%= f.check_box :active, class: 'form-control-custom' %>
+            <%= f.label :active, 'Активний',  class: 'form-check-label' %>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <ul class="nav nav-tabs" id="itemTabs" role="tablist">
+      <li class="nav-item" data-link="ukr">
+        <a class="nav-link active" id="ukr-tab" data-toggle="tab" href="#ukr" role="tab"
+           aria-controls="ukr" aria-selected="true">
+          Українською <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+      <li class="nav-item" data-link="rus">
+        <a class="nav-link" id="rus-tab" data-toggle="tab" href="#rus" role="tab"
+           aria-controls="rus" aria-selected="false">
+          Російською <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+      <li class="nav-item" data-link="eng">
+        <a class="nav-link" id="eng-tab" data-toggle="tab" href="#eng" role="tab"
+           aria-controls="eng" aria-selected="false">
+          Англійською <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+      <li class="nav-item" data-link="contacts">
+        <a class="nav-link" id="contacts-tab" data-toggle="tab" href="#contacts" role="tab"
+           aria-controls="contacts" aria-selected="false">
+          Контакти <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+      <li class="nav-item" data-link="location">
+        <a class="nav-link" id="location-tab" data-toggle="tab" href="#location" role="tab"
+           aria-controls="location" aria-selected="false">
+          Розміщення <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+      <li class="nav-item" data-link="media">
+        <a class="nav-link" id="media-tab" data-toggle="tab" href="#media" role="tab"
+           aria-controls="media" aria-selected="false">
+          Галерея <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+      <li class="nav-item" data-link="other">
+        <a class="nav-link" id="other-tab" data-toggle="tab" href="#other" role="tab"
+           aria-controls="other" aria-selected="false">
+          Налаштування <span class="tab-error badge badge-danger empty"></span>
+        </a>
+      </li>
+    </ul>
+
+    <div class="tab-content" id="langTabContent">
+      <br/>
+      <div class="tab-pane fade show active" id="ukr" role="tabpanel" aria-labelledby="ukr-tab">
+        <!-- українська -->
+        <div class="form-group">
+          <%= f.label :name %>
+          <%= f.text_field :name, class: 'form-control', required: :required %>
+          <div class="invalid-feedback">
+            Назва позиції має бути введена.
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :haslo %>
+          <%= f.text_area :haslo, class: 'form-control', rows: 2 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description %>
+          <%= f.text_area :description, class: 'form-control', rows: 5 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address %>
+          <%= f.text_area :address, class: 'form-control', rows: 3 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :seo %>
+          <%= f.text_area :seo, class: 'form-control', rows: 2 %>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="rus" role="tabpanel" aria-labelledby="rus-tab">
+        <!-- російська -->
+        <div class="form-group">
+          <%= f.label :name_ru %>
+          <%= f.text_field :name_ru, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :haslo_ru %>
+          <%= f.text_area :haslo_ru, class: 'form-control', rows: 2 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description_ru %>
+          <%= f.text_area :description_ru, class: 'form-control', rows: 5 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address_ru %>
+          <%= f.text_area :address_ru, class: 'form-control', rows: 3 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :seo_ru %>
+          <%= f.text_area :seo_ru, class: 'form-control', rows: 2 %>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="eng" role="tabpanel" aria-labelledby="eng-tab">
+        <!-- англійська -->
+        <div class="form-group">
+          <%= f.label :name_en %>
+          <%= f.text_field :name_en, class: 'form-control' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :haslo_en %>
+          <%= f.text_area :haslo_en, class: 'form-control', rows: 2 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :description_en %>
+          <%= f.text_area :description_en, class: 'form-control', rows: 5 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :address_en %>
+          <%= f.text_area :address_en, class: 'form-control', rows: 3 %>
+        </div>
+        <div class="form-group">
+          <%= f.label :seo_en %>
+          <%= f.text_area :seo_en, class: 'form-control', rows: 2 %>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="contacts" role="tabpanel" aria-labelledby="contacts-tab">
+        <!-- контакти -->
+        <div class="form-group">
+          <%= f.label :phone %>
+          <%= f.text_field :phone, class: 'form-control col-7' %>
+        </div>
+        <div class="form-group">
+          <%= f.label :email %>
+          <%= f.email_field :phone, class: 'form-control col-7' %>
+          <div class="invalid-feedback">
+            Необхідно ввести коректний email.
+          </div>
+        </div>
+        <div class="form-group">
+          <%= f.label :web %>
+          <%= f.url_field :web, class: 'form-control col-7' %>
+          <div class="invalid-feedback">
+            Необхідно ввести коректний адрес сайту.
+          </div>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="location" role="tabpanel" aria-labelledby="location-tab">
+        <!-- розміщення -->
+        <div class="form-group">
+          <%= f.label :place_id %>
+          <%= f.select :place_id, Place.all.collect {|p| [ p.name, p.id ] }, {}, {class: 'form-control'} %>
+        </div>
+        <div class="form-group">
+          <div class="row">
+            <div class="col-6">
+              <%= f.label :lat %>
+              <%= f.text_field :lat, class: 'form-control' %>
+            </div>
+            <div class="col-6">
+              <%= f.label :lng %>
+              <%= f.text_field :lng, class: 'form-control' %>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group" style="width: 100%; height: 500px; margin-bottom: 60px">
+          <div id="map" style="width: 100%; height: 100%"> </div>
+          <small class="form-text">Для встановлення координат клікнути правою клавішою миші.</small>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="media" role="tabpanel" aria-labelledby="media-tab">
+        <!-- галерея -->
+        <div class="form-group col-6 row">
+          <%= f.label :avatar %>
+          <%= f.file_field :avatar, class: 'form-control' %>
+        </div>
+        <div class="form-group col-6">
+          <%= image_tag(@item.avatar_url, class: 'img-thumbnail') if @item.avatar? %>
+        </div>
+      </div>
+
+      <div class="tab-pane fade" id="other" role="tabpanel" aria-labelledby="other-tab">
+        <!-- налаштування -->
+        <div class="form-group">
+          <%= f.label :slug %>
+          <%= f.text_field :slug, class: 'form-control col-12' %>
+        </div>
+      </div>
+    </div>
+  <div class="form-group">
+    <%= f.submit 'Зберегти', class: 'btn btn-primary' %> &nbsp; <%= link_to 'Відмінити', @back_link %>
+  </div>
+<% end %>
+
+<script>
+  var map = null;
+
+  document.addEventListener('DOMContentLoaded', function() {
+    var mapTab = document.getElementById('location-tab');
+    mapTab.addEventListener('click', function() {
+      if (!map) {
+        map = new google.maps.Map(document.getElementById('map'), {
+          center: {lat: 48.513370, lng: 23.714884},
+          zoom: 8
+        });
+
+        google.maps.event.addListener(map, "rightclick", function(event) {
+          var lat = event.latLng.lat();
+          var lng = event.latLng.lng();
+          document.getElementById('item_lat').value= lat;
+          document.getElementById('item_lng').value= lng;
+        });
+
+        setTimeout(function() {
+          google.maps.event.trigger(map, 'resize');
+          <% if !@item.lng.blank? && !@item.lat.blank? %>
+            var pos = {lat: <%= @item.lat %>, lng: <%= @item.lng %>};
+            var pos_name = "<%= @item.name %>";
+            map.setCenter(pos);
+            var marker = new google.maps.Marker(
+              {
+                position: pos,
+                map: map,
+                animation: google.maps.Animation.DROP
+              });
+          <% else %>
+            map.setCenter({lat: 48.513370, lng: 23.714884});
+          <% end %>
+        }, 1000)
+      }
+    });
+  });
+
+</script>
+
+<script async defer src='https://maps.googleapis.com/maps/api/js?key=AIzaSyAzHhZ9FiAYjBPHvZSbDoqzUd2BV974KM4'></script>

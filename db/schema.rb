@@ -10,9 +10,9 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171111143804) do
+ActiveRecord::Schema.define(version: 20180103173923) do
 
-  create_table "categories", force: :cascade do |t|
+  create_table "categories", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.integer "section_id"
     t.string "slug"
     t.string "name"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20171111143804) do
     t.string "seo_en"
   end
 
-  create_table "features", force: :cascade do |t|
+  create_table "features", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "name"
     t.string "name_ru"
     t.string "name_en"
@@ -39,7 +39,38 @@ ActiveRecord::Schema.define(version: 20171111143804) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "places", force: :cascade do |t|
+  create_table "items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
+    t.integer "category_id"
+    t.string "name"
+    t.string "name_ru"
+    t.string "name_en"
+    t.text "haslo"
+    t.text "haslo_ru"
+    t.text "haslo_en"
+    t.text "description"
+    t.text "description_ru"
+    t.text "description_en"
+    t.text "address"
+    t.text "address_ru"
+    t.text "address_en"
+    t.string "seo"
+    t.string "seo_ru"
+    t.string "seo_en"
+    t.string "phone"
+    t.string "email"
+    t.string "web"
+    t.string "slug"
+    t.integer "place_id"
+    t.string "lat"
+    t.string "lng"
+    t.boolean "active", default: true
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "avatar"
+    t.boolean "checked", default: false
+  end
+
+  create_table "places", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "slug"
     t.string "name"
     t.string "name_ru"
@@ -54,7 +85,7 @@ ActiveRecord::Schema.define(version: 20171111143804) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "sections", force: :cascade do |t|
+  create_table "sections", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.string "slug"
     t.string "name"
     t.string "name_ru"

@@ -1,4 +1,9 @@
 /*
-*= require_tree ./plugins/bvalidator
-*= require_tree ./admin
+*= require_tree ./admin/bootstrap
+*= require ./admin/dashboard/font-awesome.min
+*= require ./admin/dashboard/fontastic
+*= require ./admin/dashboard/jquery.mCustomScrollbar
+*= require ./admin/dashboard/style.default
+*= require ./admin/maps
+*= require ./admin/items
 */
